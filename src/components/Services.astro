@@ -4,16 +4,19 @@ const services = [
 		title: 'Kattoremontit',
 		description: 'Kattoremontti on tärkeä investointi, joka parantaa kiinteistön arvoa ja suojaa sitä sääolosuhteilta vuosikymmeniksi eteenpäin. Toteutamme kaikki kattoremonttityöt ammattitaidolla ja laadukkailla materiaaleilla.',
 		label: '01',
+		image: '/kattoremontit.png',
 	},
 	{
 		title: 'Kattopinnoitukset',
 		description: 'Katon pinnoitus on järkevämpi vaihtoehto kuin koko katon uusiminen — se pidentää katon elinikää ja tuo kustannussäästöjä. Käytämme ainoastaan sertifioituja ja kestäviä pinnoitemateriaaleja.',
 		label: '02',
+		image: '/kattopinnoitukset.png',
 	},
 	{
 		title: 'Stretch sisäkatot',
 		description: 'Stretch sisäkatot ovat nykyaikainen ja monikäyttöinen ratkaisu kodin sisätiloihin. Asennukset nopeasti ja siististi — lopputulos on tyylikkäs ja huoltovapaa.',
 		label: '03',
+		image: '/stretch.png',
 	},
 ];
 ---
@@ -32,7 +35,7 @@ const services = [
 			{services.map((service, i) => (
 				<div class="accordion" data-accordion>
 					<button class="accordion__header" aria-expanded={i === 0 ? 'true' : 'false'}>
-						<span class="accordion__number">{service.label}</span>
+						<span class="accordion__dot"></span>
 						<span class="accordion__title">{service.title}</span>
 						<span class="accordion__toggle">
 							<span class="accordion__toggle-line accordion__toggle-line--h"></span>
@@ -43,8 +46,9 @@ const services = [
 						<div class="accordion__content">
 							<div class="accordion__grid">
 								<div class="accordion__image">
-									<div class="accordion__image-placeholder">
-										<span>{service.title}</span>
+									<div class="accordion__image-wrap">
+										<img src={service.image} alt={service.title} class="accordion__image-img" />
+										<span class="accordion__image-num">{service.label}</span>
 									</div>
 								</div>
 								<div class="accordion__text">
@@ -104,14 +108,13 @@ const services = [
 		font-family: inherit;
 	}
 
-	.accordion__number {
-		font-family: var(--font-display);
-		font-weight: 700;
-		font-size: 0.8125rem;
-		color: var(--green-accent);
-		letter-spacing: 0.05em;
+	.accordion__dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: #7cdc00;
 		flex-shrink: 0;
-		width: 32px;
+		margin-right: 8px;
 	}
 
 	.accordion__title {
@@ -180,16 +183,56 @@ const services = [
 		padding-left: 52px;
 	}
 
-	.accordion__image-placeholder {
+	.accordion__image-wrap {
+		position: relative;
+		padding: 10px;
+		overflow: visible;
+	}
+
+	.accordion__image-wrap::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		top: 8px;
+		left: 8px;
+		background: var(--green-accent);
+		z-index: 0;
+		clip-path: polygon(0 4%, 100% 0%, 100% 96%, 0% 100%);
+		transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+
+	.accordion__image-wrap:hover::before {
+		transform: translate(3px, 3px);
+	}
+
+	.accordion__image-img {
+		position: relative;
 		width: 100%;
 		aspect-ratio: 16/10;
-		background: linear-gradient(135deg, var(--green-deep), var(--green-dark));
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: rgba(255,255,255,0.3);
-		font-size: 0.875rem;
-		clip-path: polygon(0 0, 100% 3%, 100% 97%, 0% 100%);
+		object-fit: cover;
+		display: block;
+		z-index: 1;
+		clip-path: polygon(0 0%, 100% 3%, 100% 100%, 0% 97%);
+		transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+
+	.accordion__image-wrap:hover .accordion__image-img {
+		transform: scale(1.03) translate(-2px, -2px);
+	}
+
+	.accordion__image-num {
+		position: absolute;
+		top: -4px;
+		left: -6px;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 3rem;
+		letter-spacing: -0.04em;
+		color: #7cdc00;
+		line-height: 1;
+		z-index: 2;
+		pointer-events: none;
+		user-select: none;
 	}
 
 	.accordion__text p {

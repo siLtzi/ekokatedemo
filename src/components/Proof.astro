@@ -27,7 +27,12 @@ const marqueeItems = [...testimonials, ...testimonials];
 <section class="proof">
 	<!-- Full-width image break with text overlay -->
 	<div class="proof__image-break reveal">
-		<div class="proof__image-placeholder"></div>
+		<!-- Top ridge -->
+		<svg class="proof__ridge proof__ridge--top" viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" aria-hidden="true">
+			<polyline points="0,60 720,0 1440,60" stroke="#7cdc00" stroke-width="3" fill="none"/>
+		</svg>
+
+		<img src="/proof.png" alt="Ekokate työkohde" class="proof__image-img" />
 		<div class="proof__image-overlay">
 			<div class="proof__image-text container">
 				<span class="section-label" style="color: rgba(255,255,255,0.5);">Luotettua osaamista</span>
@@ -37,6 +42,11 @@ const marqueeItems = [...testimonials, ...testimonials];
 				</h2>
 			</div>
 		</div>
+
+		<!-- Bottom ridge -->
+		<svg class="proof__ridge proof__ridge--bottom" viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" aria-hidden="true">
+			<polyline points="0,0 720,60 1440,0" stroke="#7cdc00" stroke-width="3" fill="none"/>
+		</svg>
 	</div>
 
 	<!-- Authority section with asymmetric layout -->
@@ -98,12 +108,58 @@ const marqueeItems = [...testimonials, ...testimonials];
 		position: relative;
 		width: 100%;
 		overflow: hidden;
+		clip-path: polygon(
+			0% clamp(40px, 6vw, 100px),
+			50% 0%,
+			100% clamp(40px, 6vw, 100px),
+			100% calc(100% - clamp(40px, 6vw, 100px)),
+			50% 100%,
+			0% calc(100% - clamp(40px, 6vw, 100px))
+		);
 	}
 
-	.proof__image-placeholder {
+	.proof__roof {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: clamp(40px, 6vw, 100px);
+		z-index: 3;
+	}
+
+	.proof__roof--top {
+		top: 0;
+	}
+
+	.proof__roof--bottom {
+		bottom: 0;
+	}
+
+	.proof__ridge {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: clamp(40px, 6vw, 100px);
+		z-index: 4;
+		overflow: visible;
+		filter: drop-shadow(0 0 6px rgba(124, 220, 0, 0.55));
+	}
+
+	.proof__ridge--top {
+		top: 0;
+	}
+
+	.proof__ridge--bottom {
+		bottom: 0;
+	}
+
+	.proof__image-img {
+		position: relative;
 		width: 100%;
 		height: clamp(400px, 50vw, 600px);
-		background: linear-gradient(135deg, #1a2e0a, #0d1a05);
+		object-fit: cover;
+		object-position: center;
+		display: block;
+		z-index: 1;
 	}
 
 	.proof__image-overlay {
@@ -112,6 +168,7 @@ const marqueeItems = [...testimonials, ...testimonials];
 		background: linear-gradient(to right, rgba(28,28,30,0.8) 0%, rgba(28,28,30,0.2) 100%);
 		display: flex;
 		align-items: center;
+		z-index: 2;
 	}
 
 	.proof__image-heading {
