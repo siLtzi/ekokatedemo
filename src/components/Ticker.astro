@@ -1,0 +1,75 @@
+---
+const items = [
+	'Kattoremontit',
+	'Kattopinnoitukset',
+	'Stretch sisäkatot',
+	'Katon huolto',
+	'Vedeneristys',
+	'Sadevesijärjestelmät',
+];
+
+// Duplicate for seamless loop
+const track = [...items, ...items];
+---
+
+<div class="ticker">
+	<div class="ticker__track">
+		{track.map(item => (
+			<span class="ticker__item">
+				{item}
+				<span class="ticker__dot" aria-hidden="true"></span>
+			</span>
+		))}
+	</div>
+</div>
+
+<style>
+	.ticker {
+		overflow: hidden;
+		background: var(--green-deep);
+		padding: 18px 0;
+		border-top: 1px solid rgba(255,255,255,0.06);
+		border-bottom: 1px solid rgba(255,255,255,0.06);
+	}
+
+	.ticker__track {
+		display: inline-flex;
+		white-space: nowrap;
+		animation: tickerScroll 25s linear infinite;
+	}
+
+	.ticker__track:hover {
+		animation-play-state: paused;
+	}
+
+	.ticker__item {
+		display: inline-flex;
+		align-items: center;
+		gap: 24px;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(0.875rem, 1.2vw, 1rem);
+		color: rgba(255,255,255,0.5);
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		padding: 0 24px;
+		transition: color 0.3s;
+	}
+
+	.ticker__item:hover {
+		color: rgba(255,255,255,0.9);
+	}
+
+	.ticker__dot {
+		width: 4px;
+		height: 4px;
+		border-radius: 50%;
+		background: var(--green-accent);
+		flex-shrink: 0;
+	}
+
+	@keyframes tickerScroll {
+		from { transform: translateX(0); }
+		to { transform: translateX(-50%); }
+	}
+</style>

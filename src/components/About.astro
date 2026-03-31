@@ -1,0 +1,244 @@
+---
+const stats = [
+	{ number: '15+', label: 'Vuoden\nkokemus' },
+	{ number: '500+', label: 'Valmista\nprojektia' },
+	{ number: '99%', label: 'Asiakas-\ntyytyväisyys' },
+	{ number: '50+', label: 'Ammatti-\nlaista' },
+];
+---
+
+<section class="about" id="meista">
+	<div class="about__inner container container--wide">
+		<!-- Big decorative number -->
+		<div class="about__deco reveal" aria-hidden="true">15+</div>
+
+		<div class="about__grid">
+			<div class="about__image reveal">
+				<div class="about__image-placeholder">
+					<span>Yrityksen kuva</span>
+				</div>
+				<!-- Overlapping accent block -->
+				<div class="about__image-accent"></div>
+			</div>
+
+			<div class="about__content reveal">
+				<span class="section-label">Meistä Yrityksenä</span>
+				<h2 class="about__title">
+					Tarjoamme parasta<br/>
+					palvelua rakentamiseen.
+				</h2>
+				<p class="about__text">
+					Olemme luotettava kumppani kaikissa kattotöissä. Ammattitaitomme
+					ja kokemuksemme takaavat laadukkaan lopputuloksen joka kerta.
+					Toimimme koko Pohjois-Suomen alueella ja olemme kasvaneet yhdeksi
+					alueen suurimmista kattoalan yrityksistä.
+				</p>
+				<a href="#palvelut" class="link">
+					Lue lisää palveluistamme
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Stats — horizontal with massive numbers -->
+	<div class="stats">
+		<div class="stats__inner container container--wide reveal-stagger">
+			{stats.map(stat => (
+				<div class="stats__item">
+					<span class="stats__number" data-count={stat.number}>{stat.number}</span>
+					<span class="stats__divider"></span>
+					<span class="stats__label" set:html={stat.label.replace('\n', '<br/>')} />
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.about {
+		padding-top: var(--section-pad);
+		padding-bottom: 0;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.about__inner {
+		position: relative;
+	}
+
+	/* Decorative oversized number */
+	.about__deco {
+		position: absolute;
+		top: -40px;
+		right: -20px;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(10rem, 20vw, 22rem);
+		color: var(--charcoal);
+		opacity: 0.03;
+		letter-spacing: -0.05em;
+		line-height: 1;
+		pointer-events: none;
+		user-select: none;
+		z-index: 0;
+	}
+
+	.about__grid {
+		display: grid;
+		grid-template-columns: 1.1fr 1fr;
+		gap: clamp(40px, 6vw, 100px);
+		align-items: center;
+		position: relative;
+		z-index: 1;
+	}
+
+	/* Image with overlapping accent */
+	.about__image {
+		position: relative;
+	}
+
+	.about__image-placeholder {
+		width: 100%;
+		aspect-ratio: 4/5;
+		background: linear-gradient(135deg, var(--green-deep), var(--green-dark));
+		border-radius: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: rgba(255,255,255,0.3);
+		font-size: 0.875rem;
+		clip-path: polygon(0 0, 100% 4%, 100% 96%, 0% 100%);
+		position: relative;
+		overflow: hidden;
+		transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+
+	.about__image-placeholder::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: rgba(124, 220, 0, 0.08);
+		opacity: 0;
+		transition: opacity 0.5s ease;
+	}
+
+	.about__image:hover .about__image-placeholder {
+		transform: scale(1.04);
+	}
+
+	.about__image:hover .about__image-placeholder::after {
+		opacity: 1;
+	}
+
+	.about__image-accent {
+		position: absolute;
+		bottom: -16px;
+		right: -16px;
+		width: 40%;
+		height: 40%;
+		border: 2px solid var(--green-accent);
+		opacity: 0.2;
+		z-index: -1;
+		transition: opacity 0.5s ease, transform 0.5s ease;
+	}
+
+	.about__image:hover .about__image-accent {
+		opacity: 0.55;
+		transform: translate(5px, 5px);
+	}
+
+	.about__content {
+		max-width: 520px;
+	}
+
+	.about__title {
+		font-size: clamp(2rem, 3.5vw, 3rem);
+		color: var(--charcoal);
+		margin-bottom: 20px;
+	}
+
+	.about__text {
+		font-size: 1rem;
+		color: var(--text-secondary);
+		line-height: 1.75;
+		margin-bottom: 32px;
+	}
+
+	/* Stats */
+	.stats {
+		margin-top: var(--section-pad);
+		background: var(--charcoal);
+		position: relative;
+	}
+
+	.stats__inner {
+		display: flex;
+		justify-content: space-between;
+		padding-top: clamp(56px, 6vw, 80px);
+		padding-bottom: clamp(56px, 6vw, 80px);
+	}
+
+	.stats__item {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		cursor: default;
+	}
+
+	.stats__number {
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(2.5rem, 5vw, 4.5rem);
+		color: var(--white);
+		letter-spacing: -0.04em;
+		line-height: 1;
+		transition: color 0.3s ease;
+	}
+
+	.stats__item:hover .stats__number {
+		color: #7cdc00;
+	}
+
+	.stats__divider {
+		width: 1px;
+		height: 40px;
+		background: rgba(255,255,255,0.12);
+		transition: background 0.3s ease;
+	}
+
+	.stats__item:hover .stats__divider {
+		background: rgba(124, 220, 0, 0.45);
+	}
+
+	.stats__label {
+		font-size: 0.8125rem;
+		color: rgba(255,255,255,0.4);
+		line-height: 1.4;
+		letter-spacing: 0.01em;
+	}
+
+	@media (max-width: 900px) {
+		.about__grid {
+			grid-template-columns: 1fr;
+			gap: 48px;
+		}
+
+		.about__deco {
+			display: none;
+		}
+
+		.about__image-placeholder {
+			aspect-ratio: 16/10;
+		}
+
+		.stats__inner {
+			flex-wrap: wrap;
+			gap: 40px;
+		}
+
+		.stats__item {
+			flex: 1 1 40%;
+		}
+	}
+</style>

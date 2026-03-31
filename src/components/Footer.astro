@@ -1,0 +1,204 @@
+---
+const currentYear = new Date().getFullYear();
+
+const serviceLinks = [
+	{ label: 'Kattoremontit', href: '#palvelut' },
+	{ label: 'Kattopinnoitukset', href: '#palvelut' },
+	{ label: 'Stretch sisäkatot', href: '#palvelut' },
+	{ label: 'Katon huolto', href: '#palvelut' },
+];
+
+const companyLinks = [
+	{ label: 'Etusivu', href: '#' },
+	{ label: 'Meistä', href: '#meista' },
+	{ label: 'Palvelut', href: '#palvelut' },
+	{ label: 'Yhteystiedot', href: '#yhteystiedot' },
+];
+---
+
+<footer class="footer">
+	<div class="footer__inner container">
+		<div class="footer__brand">
+			<div class="footer__logo">
+				<img src="/logoekokate.svg" alt="Ekokate" class="footer__logo-img" />
+			</div>
+			<p class="footer__desc">
+				Luotettava kumppani kaikissa kattotöissä. Palvelemme
+				Oulun seudulla ja koko Pohjois-Suomessa yli 15 vuoden
+				kokemuksella.
+			</p>
+		</div>
+
+		<div class="footer__col">
+			<h4 class="footer__heading">Palvelut</h4>
+			<ul class="footer__list">
+				{serviceLinks.map(link => (
+					<li><a href={link.href}>{link.label}</a></li>
+				))}
+			</ul>
+		</div>
+
+		<div class="footer__col">
+			<h4 class="footer__heading">Yritys</h4>
+			<ul class="footer__list">
+				{companyLinks.map(link => (
+					<li><a href={link.href}>{link.label}</a></li>
+				))}
+			</ul>
+		</div>
+
+		<div class="footer__col">
+			<h4 class="footer__heading">Yhteystiedot</h4>
+			<ul class="footer__list footer__list--contact">
+				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+					<a href="tel:0443636844">044 363 6844</a>
+				</li>
+				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+					<a href="mailto:info@ekokate.fi">info@ekokate.fi</a>
+				</li>
+				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+					<span>Selkkulankuja 16, 91900 Liminka</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="footer__bottom">
+		<div class="footer__bottom-inner container">
+			<span>&copy; {currentYear} Ekokate — Kaikki oikeudet pidätetään.</span>
+			<div class="footer__bottom-links">
+				<a href="#">Tietosuoja</a>
+				<a href="#">Evästeet</a>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: var(--green-dark);
+		color: rgba(255,255,255,0.7);
+		padding-top: clamp(64px, 8vw, 96px);
+	}
+
+	.footer__inner {
+		display: grid;
+		grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+		gap: clamp(32px, 4vw, 64px);
+		padding-bottom: clamp(48px, 6vw, 72px);
+	}
+
+	.footer__logo {
+		color: var(--white);
+		margin-bottom: 16px;
+	}
+
+	.footer__logo-img {
+		height: 32px;
+		width: auto;
+		display: block;
+		filter: brightness(0) invert(1);
+		opacity: 0.85;
+	}
+
+	.footer__desc {
+		font-size: 0.875rem;
+		line-height: 1.7;
+		max-width: 280px;
+	}
+
+	.footer__heading {
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: 0.8125rem;
+		color: rgba(255,255,255,0.4);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		margin-bottom: 20px;
+	}
+
+	.footer__list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.footer__list a,
+	.footer__list span {
+		font-size: 0.875rem;
+		color: rgba(255,255,255,0.7);
+		transition: color 0.2s;
+	}
+
+	.footer__list a:hover {
+		color: var(--white);
+	}
+
+	.footer__list--contact li {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.footer__list--contact svg {
+		color: var(--green-accent);
+		flex-shrink: 0;
+	}
+
+	/* Bottom bar */
+	.footer__bottom {
+		border-top: 1px solid rgba(255,255,255,0.08);
+	}
+
+	.footer__bottom-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		font-size: 0.8125rem;
+		color: rgba(255,255,255,0.35);
+	}
+
+	.footer__bottom-links {
+		display: flex;
+		gap: 24px;
+	}
+
+	.footer__bottom-links a {
+		color: rgba(255,255,255,0.35);
+		font-size: 0.8125rem;
+		transition: color 0.2s;
+	}
+
+	.footer__bottom-links a:hover {
+		color: rgba(255,255,255,0.7);
+	}
+
+	@media (max-width: 768px) {
+		.footer__inner {
+			grid-template-columns: 1fr 1fr;
+			gap: 40px;
+		}
+
+		.footer__brand {
+			grid-column: 1 / -1;
+		}
+
+		.footer__bottom-inner {
+			flex-direction: column;
+			gap: 12px;
+			text-align: center;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.footer__inner {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

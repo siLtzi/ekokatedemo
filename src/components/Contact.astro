@@ -1,0 +1,221 @@
+---
+---
+
+<section class="contact" id="yhteystiedot">
+	<!-- Angled divider at top -->
+	<div class="contact__angle">
+		<svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+			<polygon points="0,80 1440,0 1440,80" fill="var(--charcoal)"/>
+		</svg>
+	</div>
+	<div class="contact__inner container">
+		<div class="contact__info reveal">
+			<span class="section-label" style="color: var(--green-bright);">Yhteystiedot</span>
+			<h2 class="contact__title">Yhteydenotto</h2>
+			<p class="contact__text">
+				Tarjoamme kattavia kattopalveluita kotitalouksille ja yrityksille
+				Oulun alueella. Kokeneet ammattilaisemme auttavat sinua pitämään
+				kattosi kunnossa vuosia eteenpäin.
+			</p>
+
+			<div class="contact__details">
+				<div class="contact__detail">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+					<a href="https://www.ekokate.fi" target="_blank" rel="noopener noreferrer">www.ekokate.fi</a>
+				</div>
+				<div class="contact__detail">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+					<span>Selkkulankuja 16, 91900 Liminka</span>
+				</div>
+				<div class="contact__detail">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+					<a href="tel:0443636844">044 363 6844</a>
+				</div>
+				<div class="contact__detail">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+					<a href="mailto:info@ekokate.fi">info@ekokate.fi</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="contact__form-wrapper reveal">
+			<form class="contact__form" id="contactForm">
+				<div class="form-row">
+					<div class="form-group">
+						<label for="name">Nimi</label>
+						<input type="text" id="name" name="name" placeholder="Nimesi" required autocomplete="name" />
+					</div>
+					<div class="form-group">
+						<label for="email">Sähköposti</label>
+						<input type="email" id="email" name="email" placeholder="sahkoposti@esimerkki.fi" required autocomplete="email" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="phone">Puhelin</label>
+					<input type="tel" id="phone" name="phone" placeholder="040 123 4567" autocomplete="tel" />
+				</div>
+				<div class="form-group">
+					<label for="message">Viesti <span class="form-hint">(vähintään 10 merkkiä)</span></label>
+					<textarea id="message" name="message" rows="5" placeholder="Kerro projektistasi: mitä, missä, milloin..." required minlength="10"></textarea>
+				</div>
+				<button type="submit" class="cta cta--light contact__submit">
+					<span>Lähetä tarjouspyyntö</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</button>
+			</form>
+		</div>
+	</div>
+</section>
+
+<style>
+	.contact {
+		background: var(--charcoal);
+		padding: var(--section-pad) 0;
+		position: relative;
+	}
+
+	.contact__angle {
+		position: absolute;
+		top: -79px;
+		left: 0;
+		width: 100%;
+		line-height: 0;
+		pointer-events: none;
+	}
+
+	.contact__angle svg {
+		width: 100%;
+		height: 80px;
+		display: block;
+	}
+
+	.contact__inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: clamp(40px, 6vw, 80px);
+		align-items: start;
+	}
+
+	.contact__title {
+		font-size: clamp(2rem, 3.5vw, 3rem);
+		color: var(--white);
+		margin-bottom: 16px;
+	}
+
+	.contact__text {
+		font-size: 1rem;
+		color: rgba(255,255,255,0.6);
+		line-height: 1.75;
+		margin-bottom: 32px;
+		max-width: 420px;
+	}
+
+	.contact__details {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.contact__detail {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		color: rgba(255,255,255,0.7);
+		font-size: 0.9375rem;
+	}
+
+	.contact__detail svg {
+		color: var(--green-accent);
+		flex-shrink: 0;
+	}
+
+	.contact__detail a {
+		color: rgba(255,255,255,0.7);
+		transition: color 0.2s;
+	}
+
+	.contact__detail a:hover {
+		color: var(--white);
+	}
+
+	/* Form */
+	.contact__form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.form-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 16px;
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.form-group label {
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: rgba(255,255,255,0.5);
+		letter-spacing: 0.02em;
+	}
+
+	.form-hint {
+		font-weight: 400;
+		opacity: 0.6;
+	}
+
+	.form-group input,
+	.form-group textarea {
+		background: rgba(255,255,255,0.06);
+		border: 1px solid rgba(255,255,255,0.12);
+		border-radius: 4px;
+		padding: 14px 16px;
+		color: var(--white);
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		transition: border-color 0.2s, background 0.2s;
+		outline: none;
+	}
+
+	.form-group input::placeholder,
+	.form-group textarea::placeholder {
+		color: rgba(255,255,255,0.25);
+	}
+
+	.form-group input:focus,
+	.form-group textarea:focus {
+		border-color: var(--green-accent);
+		background: rgba(255,255,255,0.08);
+	}
+
+	.form-group textarea {
+		resize: vertical;
+		min-height: 120px;
+	}
+
+	.contact__submit {
+		align-self: flex-start;
+		margin-top: 4px;
+	}
+
+	@media (max-width: 768px) {
+		.contact__inner {
+			grid-template-columns: 1fr;
+			gap: 48px;
+		}
+
+		.form-row {
+			grid-template-columns: 1fr;
+		}
+
+		.contact__submit {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+</style>
