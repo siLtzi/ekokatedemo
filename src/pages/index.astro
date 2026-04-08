@@ -86,12 +86,17 @@ import Footer from '../components/Footer.astro';
 	const statNumbers = document.querySelectorAll('.stats__number');
 
 	statNumbers.forEach((el) => {
-		const rawText = el.textContent || '';
+		const htmlEl = el as HTMLElement;
+		const rawText = htmlEl.textContent || '';
 		const suffix = rawText.replace(/[\d.]/g, '');
 		const target = parseFloat(rawText) || 0;
 
+		// Lock the element's final width before animation so layout won't shift
+		htmlEl.style.minWidth = htmlEl.offsetWidth + 'px';
+		htmlEl.style.display = 'inline-block';
+
 		ScrollTrigger.create({
-			trigger: el,
+			trigger: htmlEl,
 			start: 'top 85%',
 			once: true,
 			onEnter: () => {
@@ -101,7 +106,7 @@ import Footer from '../components/Footer.astro';
 					duration: 2,
 					ease: 'power2.out',
 					onUpdate: () => {
-						el.textContent = Math.round(obj.val) + suffix;
+						htmlEl.textContent = Math.round(obj.val) + suffix;
 					},
 				});
 			},

@@ -27,9 +27,9 @@ const marqueeItems = [...testimonials, ...testimonials];
 <section class="proof">
 	<!-- Full-width image break with text overlay -->
 	<div class="proof__image-break reveal">
-		<!-- Top ridge -->
-		<svg class="proof__ridge proof__ridge--top" viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" aria-hidden="true">
-			<polyline points="0,60 720,0 1440,60" stroke="#7cdc00" stroke-width="3" fill="none"/>
+		<!-- Top ridge — straight horizontal line -->
+		<svg class="proof__ridge proof__ridge--top" viewBox="0 0 1440 4" fill="none" preserveAspectRatio="none" aria-hidden="true">
+			<line x1="0" y1="2" x2="1440" y2="2" stroke="#7cdc00" stroke-width="3"/>
 		</svg>
 
 		<img src="/proof.png" alt="Ekokate työkohde" class="proof__image-img" />
@@ -101,6 +101,7 @@ const marqueeItems = [...testimonials, ...testimonials];
 <style>
 	.proof {
 		padding: 0;
+		background: var(--stone);
 	}
 
 	/* Full-width image break */
@@ -108,10 +109,10 @@ const marqueeItems = [...testimonials, ...testimonials];
 		position: relative;
 		width: 100%;
 		overflow: hidden;
+		background: var(--charcoal);
 		clip-path: polygon(
-			0% clamp(40px, 6vw, 100px),
-			50% 0%,
-			100% clamp(40px, 6vw, 100px),
+			0% 0%,
+			100% 0%,
 			100% calc(100% - clamp(40px, 6vw, 100px)),
 			50% 100%,
 			0% calc(100% - clamp(40px, 6vw, 100px))
@@ -146,6 +147,7 @@ const marqueeItems = [...testimonials, ...testimonials];
 
 	.proof__ridge--top {
 		top: 0;
+		height: 4px;
 	}
 
 	.proof__ridge--bottom {
@@ -157,7 +159,7 @@ const marqueeItems = [...testimonials, ...testimonials];
 		width: 100%;
 		height: clamp(400px, 50vw, 600px);
 		object-fit: cover;
-		object-position: center;
+		object-position: center 25%;
 		display: block;
 		z-index: 1;
 	}
